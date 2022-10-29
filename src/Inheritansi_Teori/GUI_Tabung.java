@@ -35,7 +35,7 @@ public class GUI_Tabung extends javax.swing.JFrame {
         txt_r = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txt_t = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_tabung = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -49,17 +49,21 @@ public class GUI_Tabung extends javax.swing.JFrame {
         txt_permukaan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("APlikasi Hitung Tabung");
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("tabung");
 
         jLabel2.setText("Input r");
 
         jLabel3.setText("Input t");
 
-        jButton1.setText("Proses");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_tabung.setText("Proses");
+        btn_tabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_tabungActionPerformed(evt);
             }
         });
 
@@ -71,11 +75,11 @@ public class GUI_Tabung extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(btn_tabung))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(225, 225, 225)
                         .addComponent(jLabel1)
-                        .addGap(0, 221, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,9 +104,11 @@ public class GUI_Tabung extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txt_t, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btn_tabung)
                 .addGap(0, 43, Short.MAX_VALUE))
         );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel4.setText("Volume");
 
@@ -133,7 +139,7 @@ public class GUI_Tabung extends javax.swing.JFrame {
                     .addComponent(txt_tutup, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_selimut, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_permukaan, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46))
+                .addGap(61, 61, 61))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +164,7 @@ public class GUI_Tabung extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(txt_permukaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,10 +173,10 @@ public class GUI_Tabung extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,19 +191,19 @@ public class GUI_Tabung extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_tabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tabungActionPerformed
         Tabung tb = new Tabung();
         Lingkaran lk = new Lingkaran();
-        double selimut = lk.getLuas()+lk.getLuas();
-        double permukaan = lk.getLuas() + lk.getLuas() + lk.getLuas() + lk.getLuas();
         tb.r = Double.parseDouble(txt_r.getText());
         tb.t = Double.parseDouble((txt_t.getText()));
-        txt_volume.setText(Double.toString(tb.getVolume()));
-        txt_alas.setText(Double.toString(lk.getLuas()));
-        txt_tutup.setText(Double.toString(lk.getLuas()));
+        double selimut = tb.Luas()+tb.Luas();
+        double permukaan = tb.Luas() + tb.Luas() + tb.Luas() + tb.Luas();
+        txt_volume.setText(Double.toString(tb.Volume()));
+        txt_alas.setText(Double.toString(tb.Luas()));
+        txt_tutup.setText(Double.toString(tb.Luas()));
         txt_selimut.setText(Double.toString(selimut));
         txt_permukaan.setText(Double.toString(permukaan));
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_tabungActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,7 +241,7 @@ public class GUI_Tabung extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_tabung;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

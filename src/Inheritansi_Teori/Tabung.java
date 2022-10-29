@@ -5,21 +5,22 @@
  */
 package Inheritansi_Teori;
 
+
 /**
  *
  * @author ridho
  */
 public class Tabung extends Lingkaran {
-    public double t;
-    public double volume;
+    double t;
+    double volume;
     public Tabung()
     {
         this.t = 10;
         this.r = 5;
     }
-    public double getVolume()
+    double Volume()
     {
-        this.volume = this.getLuas() * this.t;
+        this.volume = this.Luas() * this.t;
         return this.volume;
     }
 }

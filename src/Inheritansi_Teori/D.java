@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author ridho
  */
 public class D {
+    protected String tes;
     public static void main(String[]args)
     {
         Tabung tb = new Tabung();
@@ -21,7 +22,7 @@ public class D {
         tb.r = sc.nextDouble();
         System.out.println("Masukan tinggi = ");
         tb.t = sc.nextInt();
-        System.out.println("Masukan volume = "+tb.getVolume());
+        System.out.println("Masukan volume = "+tb.Volume());
         
     }
 }

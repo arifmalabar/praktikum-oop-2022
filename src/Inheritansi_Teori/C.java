@@ -17,7 +17,7 @@ public class C {
         Scanner sc = new Scanner(System.in);
         System.out.print("Masukan jari-jari ");
         lk.r = sc.nextInt();
-        System.out.println("Luas = "+lk.getLuas());
-        System.out.println("Keliling = "+lk.getKeliling());
+        System.out.println("Luas = "+lk.Luas());
+        System.out.println("Keliling = "+lk.Keliling());
     }
 }

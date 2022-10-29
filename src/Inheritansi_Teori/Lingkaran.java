@@ -12,22 +12,22 @@ import java.util.Scanner;
  * @author ridho
  */
 public class Lingkaran {
-    protected double phi;
-    protected double r;
-    protected double luas;
-    protected double keliling;
+    double phi;
+    double r;
+    double luas;
+    double keliling;
     
     public Lingkaran()
     {
         this.phi = 3.14;
         this.r = 5;
     }
-    public double getLuas()
+    double Luas()
     {
         this.luas = this.phi * this.r * this.r;
         return this.luas;
     }
-    public double getKeliling()
+    double Keliling()
     {
         this.keliling =  2 * this.phi * this.r;
         return this.keliling;
