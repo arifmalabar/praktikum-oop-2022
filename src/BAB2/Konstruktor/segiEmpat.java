@@ -15,7 +15,13 @@ public class segiEmpat {
     public int kel;
     public int luas;
     public String judul;
-
+    
+    segiEmpat()
+    {
+        this.p = 6;
+        this.l = 2;
+    }
+    
     public String getJudul() {
         return judul;
     }
@@ -23,11 +29,7 @@ public class segiEmpat {
     public void setJudul() {
         this.judul = "Belajar Java";
     }
-    segiEmpat()
-    {
-        this.p = 6;
-        this.l = 2;
-    }
+    
     public int hitLuas()
     {
         luas = p * l;

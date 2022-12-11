@@ -5,7 +5,9 @@
  */
 package Penilaian;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,10 +18,33 @@ public class GuiMahasiswa extends javax.swing.JFrame {
     /**
      * Creates new form GuiMahasiswa
      */
+    int push = 0;
+    String[][] data_mhs = new String[10][3];
+    ArrayList list = new ArrayList();
     public GuiMahasiswa() {
         initComponents();
+        setTabel();
     }
-
+    public void batal()
+    {
+        txt_nama.setText("");
+        txt_nim.setText("");
+        txt_angkatan.setText("");
+        txt_prodi.setText("");
+    }
+    public void setTabel()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("NIM");
+        model.addColumn("Nama");
+        model.addColumn("Jurusans");
+        
+        for(int i = 0; i < data_mhs.length; i++)
+        {
+            model.addRow(new Object[]{data_mhs[i][0],data_mhs[i][1],data_mhs[i][2]});
+        }
+        tabel_mhs.setModel(model);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,8 +66,13 @@ public class GuiMahasiswa extends javax.swing.JFrame {
         txt_angkatan = new javax.swing.JTextField();
         btn_submit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txt_memo = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabel_mhs = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
+        btn_cari = new javax.swing.JButton();
+        btn_batal = new javax.swing.JButton();
+        btn_hapus = new javax.swing.JButton();
+        btn_ubah = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Program 2118055");
@@ -116,13 +146,40 @@ public class GuiMahasiswa extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_submit)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
-        txt_memo.setColumns(20);
-        txt_memo.setRows(5);
-        txt_memo.setEnabled(false);
-        jScrollPane1.setViewportView(txt_memo);
+        tabel_mhs.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nim", "Nama", "Prodi"
+            }
+        ));
+        jScrollPane2.setViewportView(tabel_mhs);
+
+        btn_cari.setText("Cari");
+
+        btn_batal.setText("Batal");
+        btn_batal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_batalActionPerformed(evt);
+            }
+        });
+
+        btn_hapus.setText("Hapus");
+        btn_hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hapusActionPerformed(evt);
+            }
+        });
+
+        btn_ubah.setText("Ubah");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -130,14 +187,40 @@ public class GuiMahasiswa extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_cari)
+                                .addGap(12, 12, 12))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(btn_ubah)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_hapus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_batal)
+                                .addContainerGap())))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cari))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_batal)
+                    .addComponent(btn_hapus)
+                    .addComponent(btn_ubah))
                 .addContainerGap())
         );
 
@@ -163,9 +246,9 @@ public class GuiMahasiswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -173,19 +256,30 @@ public class GuiMahasiswa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
-        txt_memo.setText("");
+        //txt_memo.setText("");
         Mahasiswa mhs = new Mahasiswa();
-        mhs.dataNama(txt_nama.getText());
-        mhs.dataNim(txt_nim.getText());
-        mhs.dataProdi(txt_prodi.getText());
-        
-        txt_memo.append("kartu tanda Mahasiswa \n");
-        txt_memo.append("----------------------\n");
-        txt_memo.append("Nama  : "+mhs.cetakNama()+"\n");
-        txt_memo.append("Nim   : "+mhs.cetakNim()+"\n");
-        txt_memo.append("Prodi : "+mhs.cetakProdi()+"\n");
-        
+        if(push < 10)
+        {
+            data_mhs[push][0] = txt_nim.getText();
+            data_mhs[push][1] = txt_nama.getText();
+            data_mhs[push][2] = txt_prodi.getText();
+            /*mhs.dataNama(txt_nama.getText());
+            mhs.dataNim(txt_nim.getText());
+            mhs.dataProdi(txt_prodi.getText());*/
+            setTabel();
+            push++;   
+        } else {
+            JOptionPane.showMessageDialog(null, "Data Penuh");
+        }
     }//GEN-LAST:event_btn_submitActionPerformed
+
+    private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
+        this.batal();
+    }//GEN-LAST:event_btn_hapusActionPerformed
+
+    private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_batalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,7 +317,11 @@ public class GuiMahasiswa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_batal;
+    private javax.swing.JButton btn_cari;
+    private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_submit;
+    private javax.swing.JButton btn_ubah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -231,9 +329,10 @@ public class GuiMahasiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabel_mhs;
     private javax.swing.JTextField txt_angkatan;
-    private javax.swing.JTextArea txt_memo;
     private javax.swing.JTextField txt_nama;
     private javax.swing.JTextField txt_nim;
     private javax.swing.JTextField txt_prodi;

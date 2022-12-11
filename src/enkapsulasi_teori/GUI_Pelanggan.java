@@ -17,8 +17,10 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
     /**
      * Creates new form GUI_Pelanggan
      */
+    Pelanggan pl;
     public GUI_Pelanggan() {
         initComponents();
+        pl = new Pelanggan();
     }
 
     /**
@@ -35,7 +37,7 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
         txt_jmltransaksi = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txt_kodetransaksi = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_proses = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txt_totaldiskon = new javax.swing.JTextField();
@@ -43,7 +45,7 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
         txt_total2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txt_bayar = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btn_kembali = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txt_kembali = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -57,10 +59,10 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
 
         jLabel2.setText("Kode Transaksi");
 
-        jButton1.setText("Proses");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_proses.setText("Proses");
+        btn_proses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_prosesActionPerformed(evt);
             }
         });
 
@@ -81,7 +83,7 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
                             .addComponent(txt_jmltransaksi)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btn_proses)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,7 +98,7 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txt_kodetransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btn_proses)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -112,10 +114,10 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
 
         jLabel6.setText("Bayar");
 
-        jButton2.setText("Kembali");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_kembali.setText("Kembali");
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_kembaliActionPerformed(evt);
             }
         });
 
@@ -132,7 +134,7 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(btn_kembali))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -163,7 +165,7 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txt_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btn_kembali)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -204,14 +206,14 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prosesActionPerformed
         int jmlTransaksi;
         double diskon;
         String kodeTransaksi;
         int totalByr;
         double total;
         //double total;
-        Pelanggan pl = new Pelanggan();
+        //Pelanggan pl = new Pelanggan();
         jmlTransaksi = Integer.parseInt(txt_jmltransaksi.getText());
         kodeTransaksi = txt_kodetransaksi.getText();
         pl.setInput_user(kodeTransaksi, jmlTransaksi);
@@ -221,25 +223,23 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
             diskon = jmlTransaksi - pl.getHasil();
             txt_totaldiskon.setText(String.valueOf(diskon));
             txt_total2.setText(String.valueOf(pl.getHasil()));
-            totalByr = Integer.parseInt(txt_bayar.getText());
-            total = totalByr - pl.getHasil();
         } else {
             diskon = jmlTransaksi - pl.getHasil();
             txt_totaldiskon.setText(String.valueOf(diskon));
             txt_total2.setText(String.valueOf(pl.getHasil()));
-            totalByr = Integer.parseInt(txt_bayar.getText());
-            total = totalByr - pl.getHasil();
         }
-       
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_prosesActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        double total;
-        Pelanggan pl = new Pelanggan();
-        total = Integer.parseInt(txt_bayar.getText())-pl.getHasil();
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
+        double total = 0.0;
+        double bayar = Double.parseDouble(txt_bayar.getText());
+        if(bayar >= pl.getHasil()){
+            total = bayar - pl.getHasil();
+        } else {
+            JOptionPane.showMessageDialog(null, "Uang anda kurang");
+        }
         txt_kembali.setText(String.valueOf(total));
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_kembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,8 +277,8 @@ public class GUI_Pelanggan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_kembali;
+    private javax.swing.JButton btn_proses;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

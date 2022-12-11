@@ -37,7 +37,7 @@ public class PersegiGui extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txt_lebar = new javax.swing.JTextField();
         txt_panjang = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_proses = new javax.swing.JButton();
         lbl_judul = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,10 +54,10 @@ public class PersegiGui extends javax.swing.JFrame {
 
         jLabel2.setText("Masukan P");
 
-        jButton1.setText("Proses");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_proses.setText("Proses");
+        btn_proses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_prosesActionPerformed(evt);
             }
         });
 
@@ -78,7 +78,7 @@ public class PersegiGui extends javax.swing.JFrame {
                             .addComponent(txt_lebar)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btn_proses)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -93,7 +93,7 @@ public class PersegiGui extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txt_panjang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btn_proses)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -169,12 +169,12 @@ public class PersegiGui extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prosesActionPerformed
         pp.l = Integer.parseInt(txt_lebar.getText());
         pp.p = Integer.parseInt(txt_panjang.getText());
         txt_luas.setText(String.valueOf(pp.hitLuas()));
         txt_keliling.setText(String.valueOf(pp.hitKeliling()));
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_prosesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,7 +212,7 @@ public class PersegiGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_proses;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

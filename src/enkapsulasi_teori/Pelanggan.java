@@ -27,9 +27,6 @@ public class Pelanggan {
         this.checkKodeTransaksi();
     }
 
-    /*public void setInput_user(String input_user) {
-    this.input_user = input_user;
-    }*/
     public void setJmlTransaksi(int jmlTransaksi) {
         this.jmlTransaksi = jmlTransaksi;
     }
